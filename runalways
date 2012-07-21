@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#Copyright (c) 2012 Amndeep Singh Mann <Amndeep.dev@gmail.com>
+#Please see License.txt for more information.  
+
+CURRENTDIRECTORY=`pwd`
+cd bin
+while [ 1 -eq 1 ]
+do
+	echo Starting picture `date`
+	time java randomartassignment.picture.DriverParallel "$@"
+	echo Ending picture `date`
+done
+cd "$CURRENTDIRECTORY"

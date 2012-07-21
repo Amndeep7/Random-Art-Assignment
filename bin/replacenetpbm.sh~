@@ -1,0 +1,8 @@
+#!/bin/bash
+DIRECTORY="$HOME/RandomArtAssignmentPictures/"
+if [ $# -ne 0 ]
+then
+	DIRECTORY=$1
+fi
+sh convertfromnetpbm.sh "$DIRECTORY"
+sh removenetpbm.sh "$DIRECTORY"

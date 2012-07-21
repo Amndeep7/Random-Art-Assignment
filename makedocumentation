@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#Copyright (c) 2012 Amndeep Singh Mann <Amndeep.dev@gmail.com>
+#Please see License.txt for more information.  
+
+# You are going to want to change the directory where this is saved for personal use.  Also going to want to change the sourcepath.
+DIRECTORY=`pwd`
+cd src
+javadoc -d ~/Programming/Java/Random\ Art\ Assignment/documentation -doctitle "Random Art Assignment" -author -private -version -sourcepath ~/Programming/Java/Random\ Art\ Assignment/src/ -subpackages randomartassignment
+cd "$DIRECTORY"
