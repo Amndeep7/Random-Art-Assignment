@@ -147,8 +147,8 @@ public final class DriverParallel
 		int numMatrices = 1;
 		boolean verbose = false;// whether or not to print anything out
 		Calendar calendar = Calendar.getInstance();// helps determine default folder and file naming
-		String pictureLocation = String.format(System.getProperty("user.home") + "/RandomArtAssignmentPictures/%d/%02d/%02d/", calendar.get(Calendar.YEAR),
-		          calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE));
+		String pictureLocation = null;
+		boolean hasLocation = false;// hasLocation (given by user)
 		String filename = null;
 		boolean hasFilename = false;// hasFilename (given by user)
 
@@ -168,6 +168,10 @@ public final class DriverParallel
 					{
 						d = depth;
 					}
+					catch(IndexOutOfBoundsException ee)
+					{
+						d = depth;
+					}
 					depth = d;
 					break;
 				}
@@ -182,6 +186,10 @@ public final class DriverParallel
 					{
 						w = width;
 					}
+					catch(IndexOutOfBoundsException ee)
+					{
+						w = width;
+					}
 					width = w;
 					break;
 				}
@@ -193,6 +201,10 @@ public final class DriverParallel
 						h = Integer.parseInt(args[x + 1]);
 					}
 					catch(NumberFormatException ee)
+					{
+						h = height;
+					}
+					catch(IndexOutOfBoundsException ee)
 					{
 						h = height;
 					}
@@ -212,13 +224,30 @@ public final class DriverParallel
 				}
 				case "-l":
 				{
-					pictureLocation = args[x + 1];
+					try
+					{
+						pictureLocation = args[x + 1];
+						hasLocation = true;
+					}
+					catch(IndexOutOfBoundsException ee)
+					{
+						pictureLocation = null;
+						hasLocation = false;
+					}
 					break;
 				}
 				case "-n":
 				{
-					filename = args[x + 1];
-					hasFilename = true;
+					try
+					{
+						filename = args[x + 1];
+						hasFilename = true;
+					}
+					catch(IndexOutOfBoundsException ee)
+					{
+						filename = null;
+						hasFilename = false;
+					}
 					break;
 				}
 				default:
@@ -436,8 +465,23 @@ public final class DriverParallel
 		 * PGM is grayscale, PPM is color - They are filled with human readable values. These are used because of that ease of creation and reading, also, I did not wish to implement a way
 		 * to make a more compact image. Since these files are very large, it is advised that you convert them into something like a JP(E)G.
 		 */
+
+		if(!hasLocation)
+		{
+			pictureLocation = String.format(System.getProperty("user.home") + "/RandomArtAssignmentPictures/%d/%02d/%02d/", calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1,
+			          calendar.get(Calendar.DATE));
+		}
+
 		String filetype = (doingGrayscale) ? ".pgm" : ".ppm";
-		File file = new File(pictureLocation);
+		File file = null;
+		try
+		{
+			file = new File(pictureLocation);
+		}
+		catch(NullPointerException ee)
+		{
+			file = new File("~");
+		}
 
 		if(!hasFilename)
 		{

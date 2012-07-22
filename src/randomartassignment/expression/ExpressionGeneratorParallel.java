@@ -38,7 +38,7 @@ public class ExpressionGeneratorParallel
 		{
 			ExpressionParallel create()
 			{
-				return (Math.random() < 0.5) ? new ExpressionParallel.Variable("X") : new ExpressionParallel.Variable("Y");
+				return RANDOM.nextBoolean() ? new ExpressionParallel.Variable("X") : new ExpressionParallel.Variable("Y");
 			}
 		},
 

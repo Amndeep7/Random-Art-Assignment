@@ -68,20 +68,6 @@ public abstract class ExpressionParallel
 	}
 
 	/**
-	 * Returns the <code>ExpressionParallel</code> argument specified by the index from the list holding the subexpressions for this expression.
-	 * 
-	 * @param index
-	 *             The index of the argument desired.
-	 * @return It returns an <code>ExpressionParallel</code> subexpression.
-	 * @throws IndexOutOfBoundsException
-	 *              If the index is less than 0 or greater than or equal to the current size of the list.
-	 */
-	public ExpressionParallel getArgument(int index)
-	{
-		return expr.get(index);
-	}
-
-	/**
 	 * The solution to this expression when provided with values for variables.
 	 * 
 	 * @param x
