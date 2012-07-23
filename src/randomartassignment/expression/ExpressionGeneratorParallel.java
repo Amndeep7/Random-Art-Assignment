@@ -120,9 +120,9 @@ public class ExpressionGeneratorParallel
 	private ExpressionParallel root;
 
 	/**
-	 * This object returns random values that help determine in what order expressions are created.
+	 * This object returns random values that help determine in what order expressions are created.  Please use it when randomness is required so as to maintain unique but reproducible creations.
 	 */
-	private static final Random RANDOM = new Random();// Can possibly add an option to give an argument so that you can repeat equations
+	static final Random RANDOM = new Random();// Can possibly add an option to give an argument so that you can repeat equations
 
 	/**
 	 * A constructor that accepts a value for the maximum depth of the expression - keep in mind that it does not necessarily always reach it.
