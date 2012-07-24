@@ -1,7 +1,5 @@
 /*
- * @DriverParallel 1.0 7/16/2012
- * 
- * Copyright (c) 2012 Amndeep Singh Mann <Amndeep.vass@gmail.com> Please read License.txt for full license information.
+ * Copyright (c) 2012 Amndeep Singh Mann <Amndeep.dev@gmail.com> Please read License.txt for full license information.
  */
 
 package randomartassignment.picture;

@@ -1,7 +1,5 @@
 /*
- * @ExpressionParallel 1.0 7/16/2012
- * 
- * Copyright (c) 2012 Amndeep Singh Mann <Amndeep.vass@gmail.com> Please read License.txt for full license information.
+ * Copyright (c) 2012 Amndeep Singh Mann <Amndeep.dev@gmail.com> Please read License.txt for full license information.
  */
 
 package randomartassignment.expression;
@@ -81,7 +79,7 @@ public abstract class ExpressionParallel
 	/**
 	 * Gets a value that help determines the number of arguments it needs when creating subexpressions for this expression.
 	 * 
-	 * @return An integer that is equal to 0 (for no arguments), 1 (for one argument), or 2 (for any number of arguments, the minimum of which is two).
+	 * @return An integer that is equal to -1 (for any number of arguments, the minimum of which is two), 0 (for no arguments), 1 (for one argument), or 2 (for two arguments).
 	 */
 	public abstract int howManyArguments();
 
@@ -121,12 +119,9 @@ public abstract class ExpressionParallel
 		/**
 		 * The solution to this expression when provided with values for variables. In this case, one of the arguments depending on the name of the variable.
 		 * 
-		 * @param x
-		 *             A value between [-1.0, 1.0] that represents a pixel's x-position.
-		 * @param y
-		 *             A value between [-1.0, 1.0] that represents a pixel's y-position.
-		 * @return A double between [-1.0, 1.0].
+		 * @see randomartassignment.expression.ExpressionParallel#evaluate(double, double)
 		 */
+		@Override
 		public double evaluate(double x, double y)
 		{
 			return (name.equals("X")) ? x : y;
@@ -136,7 +131,10 @@ public abstract class ExpressionParallel
 		 * Gets a value that help determines the number of arguments it needs when creating subexpressions for this expression.
 		 * 
 		 * @return An integer that is equal to 0 (for no arguments).
+		 * 
+		 * @see randomartassignment.expression.ExpressionParallel#howManyArguments()
 		 */
+		@Override
 		public int howManyArguments()
 		{
 			return 0;
@@ -145,8 +143,9 @@ public abstract class ExpressionParallel
 		/**
 		 * A representation of this expression, it is either "X" or "Y".
 		 * 
-		 * @return A string that represents this expression.
+		 * @see randomartassignment.expression.ExpressionParallel#toString()
 		 */
+		@Override
 		public String toString()
 		{
 			return name;
@@ -184,12 +183,9 @@ public abstract class ExpressionParallel
 		/**
 		 * The solution to this expression when provided with values for variables. In this case, all of its subexpressions multiplied together.
 		 * 
-		 * @param x
-		 *             A value between [-1.0, 1.0] that represents a pixel's x-position.
-		 * @param y
-		 *             A value between [-1.0, 1.0] that represents a pixel's y-position.
-		 * @return A double between [-1.0, 1.0].
+		 * @see randomartassignment.expression.ExpressionParallel#evaluate(double, double)
 		 */
+		@Override
 		public double evaluate(double x, double y)
 		{
 			double product = 1;
@@ -203,18 +199,22 @@ public abstract class ExpressionParallel
 		/**
 		 * Gets a value that help determines the number of arguments it needs when creating subexpressions for this expression.
 		 * 
-		 * @return An integer that is equal to 2 (for any number of arguments, the minimum of which is two).
+		 * @return An integer that is equal to -1 (for any number of arguments, the minimum of which is two).
+		 * 
+		 * @see randomartassignment.expression.ExpressionParallel#howManyArguments()
 		 */
+		@Override
 		public int howManyArguments()
 		{
-			return 2;
+			return -1;
 		}
 
 		/**
-		 * A representation of this expression that consists each subexpression separated with spaces and "*"
+		 * A representation of this expression that consists each subexpression separated with spaces and "*".
 		 * 
-		 * @return A string that represents this expression.
+		 * @see randomartassignment.expression.ExpressionParallel#toString()
 		 */
+		@Override
 		public String toString()
 		{
 			String ret = "";
@@ -258,12 +258,9 @@ public abstract class ExpressionParallel
 		 * The solution to this expression when provided with values for variables. In this case, all of its subexpressions are added together, the sum is then divided by the total number
 		 * of arguments.
 		 * 
-		 * @param x
-		 *             A value between [-1.0, 1.0] that represents a pixel's x-position.
-		 * @param y
-		 *             A value between [-1.0, 1.0] that represents a pixel's y-position.
-		 * @return A double between [-1.0, 1.0].
+		 * @see randomartassignment.expression.ExpressionParallel#evaluate(double, double)
 		 */
+		@Override
 		public double evaluate(double x, double y)
 		{
 			double total = 0;
@@ -278,18 +275,22 @@ public abstract class ExpressionParallel
 		/**
 		 * Gets a value that help determines the number of arguments it needs when creating subexpressions for this expression.
 		 * 
-		 * @return An integer that is equal to 2 (for any number of arguments, the minimum of which is two).
+		 * @return An integer that is equal to -1 (for any number of arguments, the minimum of which is two).
+		 * 
+		 * @see randomartassignment.expression.ExpressionParallel#howManyArguments()
 		 */
+		@Override
 		public int howManyArguments()
 		{
-			return 2;
+			return -1;
 		}
 
 		/**
 		 * A representation of this expression that consists of the function name and then with each subexpression within a set of parenthesis, separated with commas and spaces.
 		 * 
-		 * @return A string that represents this expression.
+		 * @see randomartassignment.expression.ExpressionParallel#toString()
 		 */
+		@Override
 		public String toString()
 		{
 			String ret = "avg(";
@@ -332,12 +333,9 @@ public abstract class ExpressionParallel
 		/**
 		 * The solution to this expression when provided with values for variables. In this case, the sin of pi times this values argument is returned.
 		 * 
-		 * @param x
-		 *             A value between [-1.0, 1.0] that represents a pixel's x-position.
-		 * @param y
-		 *             A value between [-1.0, 1.0] that represents a pixel's y-position.
-		 * @return A double between [-1.0, 1.0].
+		 * @see randomartassignment.expression.ExpressionParallel#evaluate(double, double)
 		 */
+		@Override
 		public double evaluate(double x, double y)
 		{
 			return Math.sin(Math.PI * expr.getFirst().evaluate(x, y));
@@ -347,18 +345,21 @@ public abstract class ExpressionParallel
 		 * Gets a value that help determines the number of arguments it needs when creating subexpressions for this expression.
 		 * 
 		 * @return An integer that is equal to 1 (for one argument).
+		 * 
+		 * @see randomartassignment.expression.ExpressionParallel#howManyArguments()
 		 */
+		@Override
 		public int howManyArguments()
 		{
 			return 1;
 		}
 
 		/**
-		 * A representation of an expression that is mathematically correct - i.e. using parenthesis to denote precedence and order of operation use and to denote the location of arguments
-		 * for functions.
+		 * A representation of this expression that consists of the function name, proper use of parenthesis, and the reminder that pi is also being used here.
 		 * 
-		 * @return A string that represents this expression.
+		 * @see randomartassignment.expression.ExpressionParallel#toString()
 		 */
+		@Override
 		public String toString()
 		{
 			return "sin(pi * " + expr.getFirst().toString() + ")";
@@ -395,12 +396,9 @@ public abstract class ExpressionParallel
 		/**
 		 * The solution to this expression when provided with values for variables. In this case, the cos of pi times this values argument is returned.
 		 * 
-		 * @param x
-		 *             A value between [-1.0, 1.0] that represents a pixel's x-position.
-		 * @param y
-		 *             A value between [-1.0, 1.0] that represents a pixel's y-position.
-		 * @return A double between [-1.0, 1.0].
+		 * @see randomartassignment.expression.ExpressionParallel#evaluate(double, double)
 		 */
+		@Override
 		public double evaluate(double x, double y)
 		{
 			return Math.cos(Math.PI * expr.getFirst().evaluate(x, y));
@@ -410,18 +408,21 @@ public abstract class ExpressionParallel
 		 * Gets a value that help determines the number of arguments it needs when creating subexpressions for this expression.
 		 * 
 		 * @return An integer that is equal to 1 (for one argument).
+		 * 
+		 * @see randomartassignment.expression.ExpressionParallel#howManyArguments()
 		 */
+		@Override
 		public int howManyArguments()
 		{
 			return 1;
 		}
 
 		/**
-		 * A representation of an expression that is mathematically correct - i.e. using parenthesis to denote precedence and order of operation use and to denote the location of arguments
-		 * for functions.
+		 * A representation of this expression that consists of the function name, proper use of parenthesis, and the reminder that pi is also being used here.
 		 * 
-		 * @return A string that represents this expression.
+		 * @see randomartassignment.expression.ExpressionParallel#toString()
 		 */
+		@Override
 		public String toString()
 		{
 			return "cos(pi * " + expr.getFirst().toString() + ")";

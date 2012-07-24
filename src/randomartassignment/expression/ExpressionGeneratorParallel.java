@@ -1,7 +1,5 @@
 /*
- * @ExpressionGeneratorParallel 1.0 7/16/2012
- * 
- * Copyright (c) 2012 Amndeep Singh Mann <Amndeep.vass@gmail.com> Please read License.txt for full license information.
+ * Copyright (c) 2012 Amndeep Singh Mann <Amndeep.dev@gmail.com> Please read License.txt for full license information.
  */
 
 package randomartassignment.expression;
@@ -84,6 +82,28 @@ public class ExpressionGeneratorParallel
 			{
 				return new ExpressionParallel.Cos();
 			}
+		},
+		
+		/**
+		 * A representation of the absolute value operation.
+		 */
+		ABS
+		{
+			ExpressionParallel create()
+			{
+				return new AbsoluteValue();
+			}
+		},
+		
+		/**
+		 * A representation of the exponentiation operation.
+		 */
+		POW
+		{
+			ExpressionParallel create()
+			{
+				return new Power();
+			}
 		};
 
 		/**
@@ -120,7 +140,8 @@ public class ExpressionGeneratorParallel
 	private ExpressionParallel root;
 
 	/**
-	 * This object returns random values that help determine in what order expressions are created.  Please use it when randomness is required so as to maintain unique but reproducible creations.
+	 * This object returns random values that help determine in what order expressions are created. Please use it when randomness is required so as to maintain unique but reproducible
+	 * creations.
 	 */
 	static final Random RANDOM = new Random();// Can possibly add an option to give an argument so that you can repeat equations
 
@@ -137,9 +158,10 @@ public class ExpressionGeneratorParallel
 	}
 
 	/**
-	 * A constructor that accepts a pre-made expression.  
+	 * A constructor that accepts a pre-made expression.
 	 * 
-	 * @param ex A fully filled <code>ExpressionParallel</code> tree.  
+	 * @param ex
+	 *             A fully filled <code>ExpressionParallel</code> tree.
 	 */
 	public ExpressionGeneratorParallel(ExpressionParallel ex)
 	{
@@ -147,7 +169,7 @@ public class ExpressionGeneratorParallel
 	}
 
 	/**
-	 * A test expression that has a predetermined output (shown in "Grayscale check.png").  
+	 * A test expression that has a predetermined output (shown in "Grayscale check.png").
 	 */
 	public static void grayscaleTest()
 	{
@@ -189,6 +211,10 @@ public class ExpressionGeneratorParallel
 			e.addArgument(createExpression(depth));
 		}
 		else if(e.howManyArguments() == 2)
+		{
+			e.addArguments(createExpression(depth), createExpression(depth));
+		}
+		else if(e.howManyArguments() == -1)
 		{
 			int numExpressions = RANDOM.nextInt(3) + 2;// the plus 2 here is mandatory for it to work, the maximum value can be whatever you want
 			for(int i = 0; i < numExpressions; i++)
