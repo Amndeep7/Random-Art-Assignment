@@ -82,28 +82,6 @@ public class ExpressionGeneratorParallel
 			{
 				return new ExpressionParallel.Cos();
 			}
-		},
-		
-		/**
-		 * A representation of the absolute value operation.
-		 */
-		ABS
-		{
-			ExpressionParallel create()
-			{
-				return new AbsoluteValue();
-			}
-		},
-		
-		/**
-		 * A representation of the exponentiation operation.
-		 */
-		POW
-		{
-			ExpressionParallel create()
-			{
-				return new Power();
-			}
 		};
 
 		/**
