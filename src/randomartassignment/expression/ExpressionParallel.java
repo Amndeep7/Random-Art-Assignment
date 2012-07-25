@@ -4,28 +4,28 @@
 
 package randomartassignment.expression;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 /**
  * <code>ExpressionParallel</code> represents a mathematical "expression," by which is meant either a representation of a variable, a mathematical operator, or a mathematical function (such
  * as those of trigonometry). It has been designed to work in a parallel fashion. Subclass this class in order to define more specific types of each.
  * 
  * @author Amndeep Singh Mann
- * @version 1.0 20 July 2012
+ * @version 1.1 24 July 2012
  */
 public abstract class ExpressionParallel
 {
 	/**
 	 * Keeps track of all of the arguments, otherwise referred to as subexpressions, for this expression.
 	 */
-	protected LinkedList<ExpressionParallel> expr;
+	protected ArrayList<ExpressionParallel> expr;
 
 	/**
 	 * Class constructor.
 	 */
 	public ExpressionParallel()
 	{
-		expr = new LinkedList<ExpressionParallel>();
+		expr = new ArrayList<ExpressionParallel>(5);
 	}
 
 	/**
@@ -338,7 +338,7 @@ public abstract class ExpressionParallel
 		@Override
 		public double evaluate(double x, double y)
 		{
-			return Math.sin(Math.PI * expr.getFirst().evaluate(x, y));
+			return Math.sin(Math.PI * expr.get(0).evaluate(x, y));
 		}
 
 		/**
@@ -362,7 +362,7 @@ public abstract class ExpressionParallel
 		@Override
 		public String toString()
 		{
-			return "sin(pi * " + expr.getFirst().toString() + ")";
+			return "sin(pi * " + expr.get(0).toString() + ")";
 		}
 	}
 
@@ -401,7 +401,7 @@ public abstract class ExpressionParallel
 		@Override
 		public double evaluate(double x, double y)
 		{
-			return Math.cos(Math.PI * expr.getFirst().evaluate(x, y));
+			return Math.cos(Math.PI * expr.get(0).evaluate(x, y));
 		}
 
 		/**
@@ -425,7 +425,7 @@ public abstract class ExpressionParallel
 		@Override
 		public String toString()
 		{
-			return "cos(pi * " + expr.getFirst().toString() + ")";
+			return "cos(pi * " + expr.get(0).toString() + ")";
 		}
 	}
 }
