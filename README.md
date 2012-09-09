@@ -7,7 +7,27 @@ This program, as of version 1.0, is intended to be based on a CLI.  A GUI versio
 
 Much thanks goes to Andrej Bauer for the initial formation of the idea and to Christopher A. Stone for making a lesson plan of it.
 
+Arguments for the program:
+
+-d # : The 'd' stands for depth, as in the depth of the recursion that generates the expressions, while the # stands for a whole number (i.e. an integer that is greater than 0), preferably less than 25.  The reason why there is an upper limit is that Java, at least the 32 bit version that I am running, has a limit to the amount of heap space, giving me an OutOfMemoryError, which can get exceeded during the recursive formation of the expressions that generate the pictures.
+
+-w # : The 'w' stands for width, as in the width of the picture generated, while the # stands for a whole number specifying the number of pixels.  
+
+-h # : The 'h' stands for height, as in the height of the picture generated, while the # stands for a whole number specifying the number of pixels.  
+
+-c : The 'c' stands for color, since, by default, a grayscale image is produced in the .pgm format.  If this option is enabled, a color image is produced in the .ppm format.
+
+-v : The 'v' stands for verbose, since, by default, the program provides no output to the terminal.  If this option is enabled, it lists where it currently is in the program and the current time since having started the program.  
+
+-l # : The 'l' stands for location, since, by default, the program creates a folder in the user's home directory (as identified by Java) wherein it creates subdirectories corresponding to the year, month, and day of when the program was started.  The # stands for the path.  The location where the image is stored is not relative and must be an absolute path ending with a '/'.  
+
+-n # : The 'n' stands for name, since, by default, the program generates a name for the created picture corresponding to the hour, minute, second, and millisecond of when the program was started.  The # stands for the name.  It must begin with a '/'.  
+
 To run (this depends on which package you have):
 
 RandomArtAssignment - Bare.jar
 	You can double-click on this jar in order to run it on default settings (which are basically useless).  Otherwise, you may run it from the command-line, like so (without the exterior quotes): "java -jar "RandomArtAssignment - Bare.jar"".  You may append to this command various arguments so as to modify the image that will be generated.
+
+runalways
+	Making sure that this script is in the same directory as RandomArtAssignment - Bare.jar will cause the jar to be run forever, or until you end it.  The best way to end it is, as it is running, to hold down CTRL+C until all of the threads have been killed.  Unfortunately, I have not been able to find a better way to end it than this.  You can add on all arguments to the end of this that you would to the jar file itself.  I have only tested this on Ubuntu 12.04, but I have no guarantees that it will always work even on this.  
+
