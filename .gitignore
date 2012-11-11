@@ -1,0 +1,10 @@
+#Ignore .gitignore~
+.gitignore~
+
+#Ignore binaries
+bin/
+
+#Scripts
+convertfromnetpbm
+removenetpbm
+replacenetpbm
