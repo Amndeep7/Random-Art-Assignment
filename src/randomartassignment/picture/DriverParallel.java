@@ -313,7 +313,7 @@ public final class DriverParallel
 		}
 
 		// upper-level manager for threads
-		ExecutorService pool = Executors.newCachedThreadPool();// if problem with too many threads, make it a newFixedThreadPool(int num) - for TJ, maximum num should be around 150
+		ExecutorService pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors()*2);
 
 		// contains the values from [-1.0, 1.0]
 		raw = new double[numMatrices][height][width];
