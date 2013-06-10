@@ -9,3 +9,4 @@ do
 	time java -jar RandomArtAssignment\ -\ Bare.jar "$@"
 	echo Ending picture `date`
 done
+
